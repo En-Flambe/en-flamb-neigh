@@ -8,7 +8,7 @@ import uuid
 import time
 import math
 
-SEGMENT_LENGTH = 100
+SEGMENT_LENGTH = 50
 SMOOTHING = 3
 app = Flask(__name__)
 
