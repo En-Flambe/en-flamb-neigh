@@ -10,18 +10,19 @@ import math
 import configparser
 
 config = configparser.ConfigParser()
-config.read('config.ini')
-
-defaults = {
+config['default'] = {
         'SEGMENT_LENGTH': 25, 
         'SMOOTHING': 10,
         'MINIMUM_FLAP': 80
 }
-defaults.update(config['default'])
+config.read('config.ini')
 
-SEGMENT_LENGTH = defaults['SEGMENT_LENGTH']
-SMOOTHING = defaults['SMOOTHING']
-MINIMUM_FLAP = defaults['MINIMUM_FLAP']
+SEGMENT_LENGTH = config['default']['SEGMENT_LENGTH']
+SMOOTHING = config['default']['SMOOTHING']
+MINIMUM_FLAP = config['default']['MINIMUM_FLAP']
+print(MINIMUM_FLAP)
+
+
 app = Flask(__name__)
 
 
