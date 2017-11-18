@@ -21,7 +21,7 @@ config.read('config.ini')
 SEGMENT_LENGTH = int(config['default']['SEGMENT_LENGTH'])
 SMOOTHING = int(config['default']['SMOOTHING'])
 MINIMUM_FLAP = int(config['default']['MINIMUM_FLAP'])
-MINIMUM_FLAP = bool(int(config['default']['SLOW']))
+SLOW = bool(int(config['default']['SLOW']))
 print(MINIMUM_FLAP)
 
 
