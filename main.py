@@ -64,16 +64,25 @@ def speak(text):
     for i in range(len(times) - 1):
         durations.append(times[i + 1] - times[i])
 
-    for i, d in enumerate(durations):
-        if d < MINIMUM_FLAP:
-            durations[i - 1] += d + durations[i + 1]
-            durations.pop(i)
-            durations.pop(i + 1)
+    print('durations before', *durations)
+    while True:
+        for i, d in enumerate(durations):
+            j = i // 2
+            if d < MINIMUM_FLAP:
+                if j != 0:
+                    durations[2 * (j - 1)] += durations[2 * j] + durations[2 * j + 1]
+                else:
+                    durations[2] += durations[0] + durations[1]
+                durations.pop(2 * j)
+                durations.pop(2 * j)
+                break
+        else:
+            break
     
     durations = list(map(str, durations))
     print('durations', *durations)
-    p = subprocess.Popen(['python3', 'test-servo2.py'] + durations)
-    subprocess.run(['ffplay', '-nodisp', '-autoexit', filename])
+    p = subprocess.Popen(['python3', 'test-servo2.py'] + durations, shell=True)
+    subprocess.run(['ffplay', '-nodisp', '-autoexit', filename], shell=True)
     p.terminate()
     os.remove(filename)
 
