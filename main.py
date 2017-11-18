@@ -8,7 +8,7 @@ import uuid
 import time
 import math
 
-SEGMENT_LENGTH = 25
+SEGMENT_LENGTH = 100
 SMOOTHING = 3
 app = Flask(__name__)
 
@@ -62,7 +62,7 @@ def speak(text):
     durations = [times[0]]
     for i in range(len(times) - 1):
         durations.append(times[i + 1] - times[i])
-    durations.append(len(sound) - times[-1])
+    durations.append(1000)
     
     durations = list(map(str, durations))
     print('durations', *durations)
