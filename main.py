@@ -10,6 +10,7 @@ import math
 
 SEGMENT_LENGTH = 50
 SMOOTHING = 3
+MINIMUM_FLAP = 100
 app = Flask(__name__)
 
 
@@ -62,6 +63,12 @@ def speak(text):
     durations = [times[0]]
     for i in range(len(times) - 1):
         durations.append(times[i + 1] - times[i])
+
+    for i, d in enumerate(durations):
+        if d < MINIMUM_FLAP:
+            durations[i - 1] += d + durations[i + 1]
+            durations.pop(i)
+            durations.pop(i + 1)
     
     durations = list(map(str, durations))
     print('durations', *durations)
