@@ -7,10 +7,21 @@ import subprocess
 import uuid
 import time
 import math
+import configparser
 
-SEGMENT_LENGTH = 25
-SMOOTHING = 10
-MINIMUM_FLAP = 80
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+defaults = {
+        'SEGMENT_LENGTH': 25, 
+        'SMOOTHING': 10,
+        'MINIMUM_FLAP': 80
+}
+defaults.update(config['default'])
+
+SEGMENT_LENGTH = defaults['SEGMENT_LENGTH']
+SMOOTHING = defaults['SMOOTHING']
+MINIMUM_FLAP = defaults['MINIMUM_FLAP']
 app = Flask(__name__)
 
 
