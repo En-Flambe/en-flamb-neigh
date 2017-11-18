@@ -17,9 +17,9 @@ config['default'] = {
 }
 config.read('config.ini')
 
-SEGMENT_LENGTH = config['default']['SEGMENT_LENGTH']
-SMOOTHING = config['default']['SMOOTHING']
-MINIMUM_FLAP = config['default']['MINIMUM_FLAP']
+SEGMENT_LENGTH = int(config['default']['SEGMENT_LENGTH'])
+SMOOTHING = int(config['default']['SMOOTHING'])
+MINIMUM_FLAP = int(config['default']['MINIMUM_FLAP'])
 print(MINIMUM_FLAP)
 
 
