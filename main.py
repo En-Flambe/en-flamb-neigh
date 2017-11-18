@@ -58,9 +58,14 @@ def speak(text):
         times.append(len(sound))
     print(times)
     print('syllables', len(times) / 2)
+
+    durations = [times[0]]
+    for i in range(len(times) - 1):
+        durations.append(times[i + 1] - times[i])
     
-    subprocess.run(['ffplay', '-autoexit', filename], shell=True)
-    subprocess.run(['ffplay', '-autoexit', filename], shell=True)
+    durations = list(map(str, durations))
+    subprocess.Popen(['python', 'test-servo2.py'] + durations)
+    subprocess.run(['ffplay', '-autoexit', filename])
     os.remove(filename)
 
 if __name__ == '__main__':
