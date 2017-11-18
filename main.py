@@ -13,13 +13,15 @@ config = configparser.ConfigParser()
 config['default'] = {
         'SEGMENT_LENGTH': 25, 
         'SMOOTHING': 10,
-        'MINIMUM_FLAP': 80
+        'MINIMUM_FLAP': 80,
+        'SLOW': 0
 }
 config.read('config.ini')
 
 SEGMENT_LENGTH = int(config['default']['SEGMENT_LENGTH'])
 SMOOTHING = int(config['default']['SMOOTHING'])
 MINIMUM_FLAP = int(config['default']['MINIMUM_FLAP'])
+MINIMUM_FLAP = bool(int(config['default']['SLOW']))
 print(MINIMUM_FLAP)
 
 
@@ -49,7 +51,7 @@ def main():
 def speak(text):
     basename = str(uuid.uuid4()) + '.mp3'
     filename = 'generated/' + basename
-    tts = gTTS(text=text, lang='en', slow=False)
+    tts = gTTS(text=text, lang='en', slow=SLOW)
     tts.save(filename)
 
     sound = AudioSegment.from_mp3(filename)
