@@ -1,3 +1,24 @@
 body {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#header {
   color: orange;
+  font-family: sans-serif bold;
+  font-size: 30pt;
+  text-align: center;
+  border: 0px;
+  padding: 10px;
+  margin: auto;
+  background-color: #eef;
+}
+
+#content {
+  margin: auto;
+  padding: 10px;
+  max-width: 600px;
+
+  font-family: sans-serif;
 }

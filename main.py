@@ -44,14 +44,15 @@ def descending(ls):
 def main():
     if request.method == 'POST':
         text = request.form['text']
+        accent = request.form['Type of food']
         if text:
-            speak(text)
+            speak(text, accent)
     return render_template('main.html')
 
-def speak(text):
+def speak(text, accent):
     basename = str(uuid.uuid4()) + '.mp3'
     filename = 'generated/' + basename
-    tts = gTTS(text=text, lang='en', slow=SLOW)
+    tts = gTTS(text=text, lang=accent, slow=SLOW)
     tts.save(filename)
 
     sound = AudioSegment.from_mp3(filename)
