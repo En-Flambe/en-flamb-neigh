@@ -8,8 +8,8 @@ import uuid
 import time
 import math
 
-SEGMENT_LENGTH = 50
-SMOOTHING = 3
+SEGMENT_LENGTH = 25
+SMOOTHING = 10
 MINIMUM_FLAP = 100
 app = Flask(__name__)
 
