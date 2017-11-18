@@ -6,7 +6,8 @@ body {
 
 #header {
   color: orange;
-  font-family: sans-serif bold;
+  font-family: sans-serif;
+  font-weight: bold;
   font-size: 30pt;
   text-align: center;
   border: 0px;
@@ -18,8 +19,8 @@ body {
 #content {
   margin: auto;
   padding: 10px;
-  max-width: 600px;
-
+  max-width: 400px;
+  width: 100%;
   font-family: sans-serif;
 }
 
