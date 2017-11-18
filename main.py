@@ -65,7 +65,7 @@ def speak(text):
     
     durations = list(map(str, durations))
     print('durations', *durations)
-    subprocess.Popen(['python', 'test-servo2.py'] + durations)
+    subprocess.Popen(['python3', 'test-servo2.py'] + durations)
     subprocess.run(['ffplay', '-autoexit', filename])
     os.remove(filename)
 
