@@ -10,7 +10,7 @@ import math
 
 SEGMENT_LENGTH = 25
 SMOOTHING = 10
-MINIMUM_FLAP = 100
+MINIMUM_FLAP = 80
 app = Flask(__name__)
 
 
