@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>en-flambe-neigh</title>
+    <title>En Flamb&eacute;</title>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
   </head>
@@ -14,17 +14,18 @@
       <p>En flamb&eacute;!</p>
 
       <form method="post">
-        <textarea name="text" placeholder="Say something!"></textarea>
-        <br>
-        <select name="Type of food">
+        I am a <select name="Type of food">
           <option value="en">Sandwich</option>
           <option value="en-us">Burger</option>
           <option value="de">Currywurst</option>
           <option value="it">Pizza</option>
           <option value="fr">Snails</option>
           <option value="ja">Sushi</option>
-        </select>
-        <input type="submit" value="Speak!">
+        </select><input type="submit" value="Speak!"><br><br>
+        What to say?<br>
+        <textarea name="text" placeholder="Say something!"></textarea><br><br>
+        What to do?<br>
+        <textarea name="commands" placeholder="Accepts turtle commands of the form &quot;forward 10&quot;, &quot;backward 20&quot;, &quot;left 90&quot;, &quot;right 45&quot; etc, seperated by line breaks."></textarea><br><br>
       </form>
     </div>
   </body>

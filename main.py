@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from gtts import gTTS
 from pydub import AudioSegment
 from functools import reduce
@@ -44,9 +44,12 @@ def descending(ls):
 def main():
     if request.method == 'POST':
         text = request.form['text']
+        commands = request.form['commands']
         accent = request.form['Type of food']
         if text:
             speak(text, accent)
+        if commands:
+            issue_commands(commands)
     return render_template('main.html')
 
 def speak(text, accent):
@@ -99,6 +102,9 @@ def speak(text, accent):
     p = subprocess.Popen(['python3', 'test-servo2.py'] + durations)
     subprocess.run(['ffplay', '-nodisp', '-autoexit', filename])
     os.remove(filename)
+
+def issue_commands(commands):
+    pass
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0')
