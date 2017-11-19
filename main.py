@@ -4,6 +4,7 @@ from pydub import AudioSegment
 from functools import reduce
 import os
 import subprocess
+from multiprocessing import Process
 import uuid
 import time
 import math
@@ -49,9 +50,13 @@ def main():
         commands = request.form['commands']
         accent = request.form['Type of food']
         if text:
-            speak(text, accent)
+            p = Process(target=speak, args=(text,accent,))
+            #speak(text, accent)
+            p.start()
         if commands:
-            issue_commands(commands)
+            p = Process(target=issue_commands, args=(commands, ser,))
+            #issue_commands(commands)
+            p.start()
     return render_template('main.html')
 
 def speak(text, accent):
@@ -105,8 +110,18 @@ def speak(text, accent):
     subprocess.run(['ffplay', '-nodisp', '-autoexit', filename])
     os.remove(filename)
 
-def issue_commands(commands):
-    pass
+def issue_commands(commands, ser):
+    time.sleep(1)
+    mvmts = commands.lower().split(',')
+    for mvmt in mvmts:
+        cmd = mvmt.strip().split(' ')
+        print(cmd)
+        if len(cmd) > 1 :
+           for _ in range(int(cmd[1])):
+              ser.write(cmd[0].encode('utf-8'))
+        else:
+          ser.write(mvmt.encode('utf-8'))
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0')
