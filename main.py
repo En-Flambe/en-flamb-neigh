@@ -8,6 +8,7 @@ import uuid
 import time
 import math
 import configparser
+import serial
 
 config = configparser.ConfigParser()
 config['default'] = {
@@ -24,6 +25,7 @@ MINIMUM_FLAP = int(config['default']['MINIMUM_FLAP'])
 SLOW = bool(int(config['default']['SLOW']))
 print(MINIMUM_FLAP)
 
+ser = serial.Serial('/dev/ttyUSB0', 9600)
 
 app = Flask(__name__)
 
