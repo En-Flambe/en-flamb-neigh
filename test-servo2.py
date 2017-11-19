@@ -4,7 +4,7 @@ import sys
 
 from time import sleep
 
-sleep(0.33)
+#sleep(0.33)
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3,GPIO.OUT)
