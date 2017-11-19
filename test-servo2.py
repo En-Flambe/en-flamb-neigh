@@ -4,6 +4,8 @@ import sys
 
 from time import sleep
 
+sleep(0.33)
+
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3,GPIO.OUT)
 pwm=GPIO.PWM(3,50)
@@ -25,12 +27,12 @@ def openFor(openTime,closeTime):
 	sleep((closeTime/1000)-min_gap)
 
 
-sleep(0.33)
 setAngle(70)	 
 print(sys.argv)
 for i in range(int(len(sys.argv)/2)):
-	openFor(int(sys.argv[2*i+1]),int(sys.argv[2*i+2]))
-5
+	openTime=int(sys.argv[2*i+1])
+	closeTime=int(sys.argv[2*i+2])
+	openFor(openTime,closeTime)
 setAngle(70)	 
 pwm.stop()
 GPIO.cleanup()

@@ -76,7 +76,7 @@ def speak(text, accent):
         prev_dBFS.pop(0)
 
     if len(times) / 2 != len(times) // 2:
-        times.append(len(sound))
+        times.append(SEGMENT_LENGTH * (len(sound) // SEGMENT_LENGTH + 1))
     print(times)
     print('syllables', len(times) / 2)
 
