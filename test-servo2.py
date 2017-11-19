@@ -4,7 +4,7 @@ import sys
 
 from time import sleep
 
-#sleep(0.33)
+sleep(0.33)
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3,GPIO.OUT)
@@ -20,16 +20,16 @@ def setAngle(angle):
 	GPIO.output(3, False)
 	pwm.ChangeDutyCycle(0)
 
-#def openFor(openTime,closeTime):
-#	setAngle(50)
-#	sleep((openTime/1000)-min_gap)
-#	setAngle(70)
-#	sleep((closeTime/1000)-min_gap)
-def openFor(closeTime,openTime):
-	setAngle(70)
-	sleep((closeTime/1000)-min_gap)
+def openFor(openTime,closeTime):
 	setAngle(50)
 	sleep((openTime/1000)-min_gap)
+	setAngle(70)
+	sleep((closeTime/1000)-min_gap)
+#def openFor(closeTime,openTime):
+#	setAngle(70)
+#	sleep((closeTime/1000)-min_gap)
+#	setAngle(50)
+#	sleep((openTime/1000)-min_gap)
 
 
 setAngle(70)	 
